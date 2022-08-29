@@ -15,6 +15,7 @@ let reducers = combineReducers ({
 
 let store = createStore(reducers);
 
+// TODO: Удалить, но потом
 window.store = store;
 
 export default store;

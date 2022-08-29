@@ -14,7 +14,13 @@ export const userAPI = {
       .then(response => {
         return response.data;
       })
-  }
+  },
+  // deleteUsers() {
+  //   return instance.delete(`follow/${u.id}`)
+  //     .then(response => {
+  //       return response.data;
+  //     })
+  // },
 }
 
 export const authAPI = {
