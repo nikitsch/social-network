@@ -1,7 +1,7 @@
+import { Navigate } from "react-router-dom";
 import DialogItem from "./DialogItem/DialogItem";
 import s from "./Dialogs.module.css"
 import Message from "./Massage/Message";
-// import WriteNewMassage from "./WriteNewMassage/WriteNewMassage";
 
 const Dialogs = (props) => {
   let state = props.dialogPage;
@@ -19,6 +19,8 @@ const Dialogs = (props) => {
     props.updateNewMessageTextAction(action);
   }
 
+  if (!props.isAuth) return <Navigate to={'/login'} />
+
   return (
     <div className={s.dialogs}>
       <div className={s.dialog__items}>
@@ -30,7 +32,6 @@ const Dialogs = (props) => {
           <div>
             <textarea placeholder="Noo! Don't f* write me!"
               onChange={onMassageChange}
-              // ref={newMassageElement} 
               value={newMessagesText} />
           </div>
           <div>
