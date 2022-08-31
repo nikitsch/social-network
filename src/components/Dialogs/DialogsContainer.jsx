@@ -24,7 +24,8 @@ import { connect } from "react-redux/es/exports";
 
 let mapStateToProps = (state) => {
   return {
-    dialogPage: state.dialogsReducer
+    dialogPage: state.dialogsReducer,
+    isAuth: state.auth.isAuth
   }
 }
 
