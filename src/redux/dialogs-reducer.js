@@ -1,5 +1,5 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+// const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState = {
   dialogsData: [
@@ -12,7 +12,7 @@ let initialState = {
     { id: 2, message: "Hi." },
     { id: 3, message: "Do you remember me?" },
   ],
-  newMessagesText: "",
+  // newMessagesText: "",
 };
 
 const dialogsReducer = (state = initialState, action) => {
@@ -23,31 +23,32 @@ const dialogsReducer = (state = initialState, action) => {
 
       let newMessages = {
         id: 4,
-        message: state.newMessagesText
+        message: action.newMessagesText
       };
 
       return {
         ...state,
-        newMessagesText: '',
+        // newMessagesText: '',
         messagesData: [...state.messagesData, newMessages]
       }
 
-    case UPDATE_NEW_MESSAGE_TEXT:
-      return {
-        ...state,
-        newMessagesText: action.newMess
-      }
+    // case UPDATE_NEW_MESSAGE_TEXT:
+    //   return {
+    //     ...state,
+    //     newMessagesText: action.newMess
+    //   }
     default:
       return state;
   };
 };
 
-export const addMessageActionCreator = () => ({
-  type: ADD_MESSAGE
+export const addMessageActionCreator = (newMessagesText) => ({
+  type: ADD_MESSAGE,
+  newMessagesText
 });
-export const updateNewMessageTextActionCreator = (text) => ({
-  type: UPDATE_NEW_MESSAGE_TEXT,
-  newMess: text
-});
+// export const updateNewMessageTextActionCreator = (text) => ({
+//   type: UPDATE_NEW_MESSAGE_TEXT,
+//   newMess: text
+// });
 
 export default dialogsReducer;
