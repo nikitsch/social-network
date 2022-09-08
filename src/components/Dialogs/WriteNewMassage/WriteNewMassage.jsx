@@ -1,35 +1,26 @@
 import React from 'react'
-// import s from "../Dialogs.module.css"
-// моё
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../../redux/dialogs-reducer"
-// моё
+import { addMessageActionCreator, updateNewMessageTextActionCreator } from "../../../redux/dialogs-reducer"
 
-const WriteNewMassage = (props) => {
-  let newMassageElement = React.createRef();
+const WriteNewMessage = (props) => {
+  let newMessageElement = React.createRef();
 
-  let addMassage = () => {
-    // let massage = newMassageElement.current.value;
-    // alert(massage);
-    // моё
+  let addMessage = () => {
     props.dispatch(addMessageActionCreator());
-    // моё
   }
-    // моё
-  let onMassageChange = () => {
-    let text = newMassageElement.current.value;
+  let onMessageChange = () => {
+    let text = newMessageElement.current.value;
     let action = updateNewMessageTextActionCreator(text);
     props.dispatch(action);
   }
-    // моё
   return (
     <div>
       <div>
-        <textarea placeholder="Noo! Don't f* write me!" onChange={onMassageChange} ref={newMassageElement} value={props.newMessagesText} />
+        <textarea placeholder="Noo! Don't f* write me!" onChange={onMessageChange} ref={newMessageElement} value={props.newMessagesText} />
       </div>
       <div>
-        <button onClick={addMassage}>Add massage</button>
+        <button onClick={addMessage}>Add message</button>
       </div>
     </div>)
 };
 
-export default WriteNewMassage;
+export default WriteNewMessage;
