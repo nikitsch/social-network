@@ -1,5 +1,5 @@
 // import { withRouter } from 'react-router-dom';
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
 import React from 'react';
 import { connect } from 'react-redux';
 import Profile from './Profile';
@@ -13,6 +13,9 @@ class ProfileContainer extends React.Component {
     let userId = this.props.router.params.userId;
     if (!userId) {
       userId = this.props.autorizedUserId;
+      if (!userId) {
+        <Navigate to="/login" />
+      }
     }
     this.props.getUsersProfile(userId);
     this.props.getStatus(userId);
@@ -34,7 +37,7 @@ let mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth
 });
 
-function withRouter(Component) {
+export function withRouter(Component) {
   function ComponentWithRouterProp(props) {
     let location = useLocation();
     let navigate = useNavigate();
