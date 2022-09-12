@@ -1,6 +1,6 @@
 import Preloader from '../../common/Preloader/Preloader';
 import s from './ProfileInfo.module.css';
-import ProfileStatus from './ProfileStatus';
+import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
 const ProfileInfo = (props) => {
 
@@ -16,7 +16,7 @@ const ProfileInfo = (props) => {
       <div className={s.description_block}>
         <img src={props.profile.photos.large} alt='AVA' />
         <div>{`About me: ${props.profile.aboutMe}`}</div>
-        <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+        <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} />
         {/* https://yt3.ggpht.com/ytc/AKedOLTlGVLrXzgZDwItF-m8Tux0NF5II9C-TIa6HgIalg=s900-c-k-c0x00ffffff-no-rj */}
       </div>
     </div>
