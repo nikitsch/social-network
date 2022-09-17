@@ -21,6 +21,7 @@ class App extends React.Component {
     }
     return (
       <BrowserRouter>
+      {/* Перенести <BrowserRouter> в index 90у - 27м */}
         <div className="app-wrapper">
           <HeaderContainer />
           <Nav />
