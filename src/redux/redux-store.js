@@ -1,4 +1,4 @@
-import {applyMiddleware, combineReducers, legacy_createStore as createStore} from 'redux';
+import {applyMiddleware, combineReducers, compose, legacy_createStore as createStore} from 'redux';
 import profileReducer from './profile-reducer';
 import dialogsReducer from './dialogs-reducer';
 import sidebarReducer from './sidebar-reducer';
@@ -16,11 +16,14 @@ let reducers = combineReducers ({
   auth: authReducer,
   form: formReducer,
   app: appReducer
-})
+});
 
-let store = createStore(reducers, applyMiddleware(thunkMiddleware));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
+
+// let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 // TODO: Удалить, но потом
-window.store = store;
+// window.store = store;
 
 export default store;

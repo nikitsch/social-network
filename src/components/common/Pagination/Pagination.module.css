@@ -1,7 +1,55 @@
 .selectedPageConteiner {
+  margin: 5px;
+  height: 24px;
+  width: 693px;
+  display: flex;
+  align-items: center;
+
   cursor: pointer;
+
 }
 
-.selectedPage {
+.btnPortionChange {
+  height: 24px;
+  width: 24px;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+}
+
+.btnPortionChange:active {
+  transform: scale(1.1);
+}
+
+.btnPortionChange:hover {
+  opacity: 1;
+}
+
+.btnLeft {
+  background-image: url(../../../assets/svg/btn-previewer.svg);
+}
+
+.btnRight {
+  background-image: url(../../../assets/svg/btn-previewer.svg);
+}
+
+.pageNumber {
+  height: 22px;
+  width: 43px;
+  text-align: center;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.pageNumber:hover {
+  background-color: black;
+  color: white;
+}
+
+
+.pageNumber.selectedPage {
   font-weight: bold;
+  border-color: black;
 }
