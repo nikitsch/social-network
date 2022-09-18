@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import styles from './Users.module.css'
+import styles from './User.module.css'
 import DefoltUserPhoto from '../../assets/images/elle.jpg'
 
 let User = ({ user, followingInProgress, follow, unfollow }) => {
