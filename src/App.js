@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
+// import DialogsContainer from './components/Dialogs/DialogsContainer';
+// import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 import Nav from './components/Nav/Nav';
-import ProfileContainer from './components/Profile/ProfileContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import { connect } from 'react-redux';
 import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
+
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 class App extends React.Component {
   componentDidMount() {
@@ -26,6 +29,7 @@ class App extends React.Component {
           <HeaderContainer />
           <Nav />
           <div className="app-wrapper-content">
+          <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route
                 path="/profile/"
@@ -39,7 +43,7 @@ class App extends React.Component {
                   <ProfileContainer />
                 }
               />
-              <Route
+              <Route exact
                 path="/dialogs"
                 element={
                   <DialogsContainer />
@@ -58,6 +62,7 @@ class App extends React.Component {
                 }
               />
             </Routes>
+            </Suspense>
           </div>
         </div>
       </BrowserRouter >
