@@ -18,7 +18,7 @@ let Pagination = ({ currentPage, onPageChanged, totalItemsCount, portionSize = 1
 
   return <div className={styles.selectedPageConteiner}>
     {portionNumber > 1 &&
-      <button className={styles.btnPortionChange + ' ' + styles.btnLeft} onClick={() => { setPortionNumber(portionNumber - 1) }}></button>}
+      <button className={styles.btnPortionChange} onClick={() => { setPortionNumber(portionNumber - 1) }}></button>}
 
     {pages
       .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
@@ -32,7 +32,7 @@ let Pagination = ({ currentPage, onPageChanged, totalItemsCount, portionSize = 1
           }}>{p}</span>
       })}
     {portionCount > portionNumber &&
-      <button className={styles.btnPortionChange + ' ' + styles.btnLeft} onClick={() => { setPortionNumber(portionNumber + 1) }}></button>}
+      <button className={styles.btnPortionChange + ' ' + styles.btnRight} onClick={() => { setPortionNumber(portionNumber + 1) }}></button>}
   </div>
 }
 
