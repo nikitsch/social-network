@@ -6,7 +6,7 @@ import { login } from '../../redux/auth-reducer';
 import { Navigate } from "react-router-dom";
 import s from '../common/FormsControls/FormsControls.module.css';
 
-const LoginForm = (handleSubmit, error) => {
+const LoginForm = ({handleSubmit, error}) => {
   // что бы не писать props
   return (
     <form onSubmit={handleSubmit}>
