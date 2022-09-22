@@ -6,7 +6,7 @@ const instance = axios.create({
   headers: {
     'API-KEY': '554413f3-0efe-4111-880a-a4852cf6f5a8'
   }
-})
+});
 
 export const userAPI = {
   requestUsers(currentPage = 1, pageSize = 10) {
@@ -25,7 +25,7 @@ export const userAPI = {
     console.warn('Obsolete method. Please profileAPI object.')
     return profileAPI.getProfile(userId);
   }
-}
+};
 
 export const profileAPI = {
   getProfile(userId) {
@@ -45,17 +45,22 @@ export const profileAPI = {
   saveProfile(profile) {
     return instance.put(`profile`, profile)
   }
-}
+};
 
 export const authAPI = {
   me() {
     return instance.get(`auth/me`);
   },
-  login(email, password, rememberMe = false) {
-    return instance.post(`auth/login`, { email, password, rememberMe });
+  login(email, password, rememberMe = false, captcha = null) {
+    return instance.post(`auth/login`, { email, password, rememberMe, captcha });
   },
   logout() {
     return instance.delete(`auth/login`);
   }
-}
+};
 
+export const securityAPI = {
+  getCaptchaUrl() {
+    return instance.get(`security/get-captcha-url`);
+  }
+};
