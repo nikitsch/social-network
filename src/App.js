@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 // import DialogsContainer from './components/Dialogs/DialogsContainer';
 // import ProfileContainer from './components/Profile/ProfileContainer';
@@ -15,9 +15,19 @@ const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsCo
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 class App extends React.Component {
+  catchAllUnhandledErrors = (reason, promise) => {
+    alert("Some error occured");
+  };
+
   componentDidMount() {
     this.props.initializeApp();
+    window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
+  };
+
+  componentWillUnmount() {
+    window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
   }
+
   render() {
     if (!this.props.initialized) {
       return <Preloader />
@@ -31,6 +41,12 @@ class App extends React.Component {
           <div className="app-wrapper-content">
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
+            <Route
+                path="/"
+                element={
+                  <Navigate to="/profile" />
+                }
+              />
               <Route
                 path="/profile/"
                 element={
@@ -59,6 +75,12 @@ class App extends React.Component {
                 path="/login"
                 element={
                   <Login />
+                }
+              />
+              <Route
+                path="*"
+                element={
+                  <div>404 NOT FOUND</div>
                 }
               />
             </Routes>
