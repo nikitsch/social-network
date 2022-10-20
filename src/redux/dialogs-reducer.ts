@@ -1,21 +1,33 @@
 const ADD_MESSAGE = 'ADD-MESSAGE';
 // const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
+type DialogType = {
+  id: number,
+  name: string
+}
+
+type MessageType = {
+  id: number,
+  message: string
+}
+
+
 let initialState = {
   dialogsData: [
     { id: 1, name: "Mikita" },
     { id: 2, name: "Denis" },
     { id: 3, name: "Anastasia" },
-  ],
+  ] as Array<DialogType>,
   messagesData: [
     { id: 1, message: "Yo!" },
     { id: 2, message: "Hi." },
     { id: 3, message: "Do you remember me?" },
-  ],
-  // newMessagesText: "",
+  ] as Array<MessageType>
 };
 
-const dialogsReducer = (state = initialState, action) => {
+export type InitialStateType = typeof initialState;
+
+const dialogsReducer = (state = initialState, action: any) => {
 
   switch (action.type) {
 
@@ -42,7 +54,12 @@ const dialogsReducer = (state = initialState, action) => {
   };
 };
 
-export const addMessageActionCreator = (newMessagesText) => ({
+type addMessageActionCreatorType = {
+  type: typeof ADD_MESSAGE
+  newMessagesText: string
+}
+
+export const addMessageActionCreator = (newMessagesText: string): addMessageActionCreatorType => ({
   type: ADD_MESSAGE,
   newMessagesText
 });
