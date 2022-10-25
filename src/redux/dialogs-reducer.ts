@@ -11,21 +11,25 @@ type MessageType = {
   message: string
 }
 
+type InitialStateType = {
+  dialogsData: DialogType[]
+  messagesData: MessageType[]
+}
 
-let initialState = {
+let initialState: InitialStateType = {
   dialogsData: [
     { id: 1, name: "Mikita" },
     { id: 2, name: "Denis" },
     { id: 3, name: "Anastasia" },
-  ] as Array<DialogType>,
+  ], //as Array<DialogType>,
   messagesData: [
     { id: 1, message: "Yo!" },
     { id: 2, message: "Hi." },
     { id: 3, message: "Do you remember me?" },
-  ] as Array<MessageType>
+  ] //as Array<MessageType>
 };
 
-export type InitialStateType = typeof initialState;
+// export type InitialStateType = typeof initialState;
 
 const dialogsReducer = (state = initialState, action: any) => {
 
