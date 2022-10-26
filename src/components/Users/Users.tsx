@@ -4,7 +4,7 @@ import styles from './Users.module.css';
 import { UserType } from '../../types/types';
 import React, { FC } from 'react';
 
-type PropsType = {
+type UsersPropsType = {
   currentPage: number
   onPageChanged: (pageNumber: number) => void
   totalUsersCount: number
@@ -15,7 +15,7 @@ type PropsType = {
   follow: (userId: number) => void
 }
 
-let Users: FC<PropsType> = ({ currentPage, onPageChanged, totalUsersCount, pageSize, users, ...props }) => {
+let Users: FC<UsersPropsType> = ({ currentPage, onPageChanged, totalUsersCount, pageSize, users, ...props }) => {
   return <div>
     <div className={styles.usersPagePagination}>
       <Pagination

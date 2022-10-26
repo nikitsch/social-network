@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import styles from './Pagination.module.css';
 import cn from 'classnames';
-import { FC } from 'react';
 
 type PropsType = {
   currentPage: number
