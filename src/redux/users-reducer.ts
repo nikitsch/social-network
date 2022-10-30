@@ -137,10 +137,10 @@ export const toggleFollowingProgress = (isFetching: boolean, userID: number): To
   isFetching,
   userID
 });
-//1 тип
+//1 type
 type GetStateType = () => AppStateType;
 type DispatchType = Dispatch<ActionTypes>;
-//2тип
+//2 type
 type ThunkType = ThunkAction<Promise<void>, AppStateType, unknown, ActionTypes>
 
 export const requestUsers = (currentPage: number, pageSize: number) => {
