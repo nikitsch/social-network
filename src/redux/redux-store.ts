@@ -1,4 +1,4 @@
-import {applyMiddleware, combineReducers, compose, legacy_createStore as createStore} from 'redux';
+import { applyMiddleware, combineReducers, compose, legacy_createStore as createStore } from 'redux';
 import profileReducer from './profile-reducer';
 import dialogsReducer from './dialogs-reducer';
 import sidebarReducer from './sidebar-reducer';
@@ -8,7 +8,7 @@ import thunkMiddleware from 'redux-thunk';
 import { reducer as formReducer } from 'redux-form';
 import appReducer from './app-reducer';
 
-let rootReducer = combineReducers ({
+let rootReducer = combineReducers({
   profileReducer: profileReducer,
   dialogsReducer: dialogsReducer,
   sidebarReducer: sidebarReducer,
@@ -20,6 +20,9 @@ let rootReducer = combineReducers ({
 
 type RootReducerType = typeof rootReducer;
 export type AppStateType = ReturnType<RootReducerType>
+
+type PropertiesTypes<T> = T extends { [key: string]: infer U } ? U : never
+export type InferActionsTypes<T extends { [key: string]: (...args: any[]) => any }> = ReturnType<PropertiesTypes<T>>
 
 declare global {
   interface Window {
